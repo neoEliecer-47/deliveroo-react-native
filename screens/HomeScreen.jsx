@@ -16,6 +16,8 @@ import {
   UserIcon,
   MagnifyingGlassIcon,
 } from "react-native-heroicons/outline";
+import Categories from "../components/Categories";
+import FeaturedRow from "../components/FeaturedRow";
 
 const HomeScreen = () => {
   // useLayoutEffect(()=>{
@@ -54,7 +56,7 @@ const HomeScreen = () => {
           <UserIcon size={30} color={"#00CCBB"} className="" />
         </View>
         {/* search */}
-        <View className="flex-row items-center space-x-2 pb-2 px-4">
+        <View className="flex-row items-center space-x-2 pb-2 mx-4">
           <View className="flex-row flex-1 space-x-2 bg-gray-200 items-center justify-center">
             <MagnifyingGlassIcon color={"gray"} size={20} />
             <TextInput
@@ -69,7 +71,25 @@ const HomeScreen = () => {
         {/* Body */}
         <ScrollView>
           {/* Categories component */}
+          <Categories />
           {/* featured rows */}
+          <FeaturedRow 
+            title='Featured'
+            description='paid placements from our partners'
+            id='1'
+          />
+           {/* tasty discounts */}
+           <FeaturedRow 
+            title='Featured'
+            description='paid placements from our partners'
+            id='2'
+          />
+           {/* offers near u */}
+           <FeaturedRow 
+            title='Featured'
+            description='paid placements from our partners'
+            id='3'
+          />
         </ScrollView>
  
     </View>
@@ -78,14 +98,4 @@ const HomeScreen = () => {
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({
-  image: {
-    width: 24,
-    height: 24,
-    borderRadius: 9999,
-    backgroundColor: "#d6d6cf",
-  },
-  text: {
-    flex: 1,
-  },
-});
+

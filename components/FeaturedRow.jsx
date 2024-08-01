@@ -33,6 +33,42 @@ export default function FeaturedRow({ title, description, id }) {
             long={20}
             lat={0}
         />
+        <RestorantCard 
+            id='1'
+            img='https://links.papareact.com/gn7'
+            title='Sushi'
+            rating={4.5}
+            genre='japanese'
+            address='123 main st'
+            short_description='test description'
+            dishes={[]}
+            long={20}
+            lat={0}
+        />
+        <RestorantCard 
+            id='1'
+            img='https://links.papareact.com/gn7'
+            title='Sushi'
+            rating={4.5}
+            genre='japanese'
+            address='123 main st'
+            short_description='test description'
+            dishes={[]}
+            long={20}
+            lat={0}
+        />
+        <RestorantCard 
+            id='1'
+            img='https://links.papareact.com/gn7'
+            title='Sushi'
+            rating={4.5}
+            genre='japanese'
+            address='123 main st'
+            short_description='test description'
+            dishes={[]}
+            long={20}
+            lat={0}
+        />
       </ScrollView>
     </View>
   );

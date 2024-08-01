@@ -32,7 +32,7 @@ const HomeScreen = () => {
   return (
     <View
       style={{ paddingBottom: insets.bottom, paddingTop: insets.top }}
-      className="bg-white pt-5 flex-auto"
+      className="bg-gray-200 pt-5 flex-auto"
     >
 
         {/* header */}

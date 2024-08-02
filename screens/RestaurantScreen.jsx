@@ -1,4 +1,4 @@
-import { Text, View, ScrollView, Image } from "react-native";
+import { Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
 import { urlFor } from "../sanity";
 
 
@@ -16,13 +16,14 @@ export default function RestaurantScreen({
     lat }){
   return (
     <ScrollView>
-        <View>
+        <View className='relative'>
             <Image 
               source={{
                 uri: urlFor(img).url()
               }}
-              className='w-12 h-12'
+              className='w-full h-56 bg-gray-300 p-2'
             />
+            <TouchableOpacity />
         </View>
     </ScrollView>
   )

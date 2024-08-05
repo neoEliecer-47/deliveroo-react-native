@@ -4,9 +4,7 @@ import { StarIcon } from "react-native-heroicons/solid";
 import { MapPinIcon } from "react-native-heroicons/outline";
 import { urlFor } from "../sanity";
 import { Link, router } from "expo-router";
-import { styled } from "nativewind";
-import { useDeliverooContext } from "../context/DeliverooContext";
-import { useEffect } from "react";
+
 
 export default function RestorantCard({
   title,
@@ -15,12 +13,14 @@ export default function RestorantCard({
   address,
   img,
   short_description,
+  dishes
 }) {
   let image = img.asset._ref;
+
   return (
     <TouchableOpacity
       onPress={() =>
-        router.push({
+        router.navigate({
           pathname: "/[restaurantDetails]",
           params: {
             title,
@@ -29,9 +29,11 @@ export default function RestorantCard({
             address,
             image,
             short_description,
+            dishes: JSON.stringify(dishes)
           },
         })
       }
+      className='bg-white mr-3 shadow'
     >
       <Image
         source={{

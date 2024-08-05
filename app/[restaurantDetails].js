@@ -16,13 +16,16 @@ import {
 } from "react-native-heroicons/outline";
 import { StarIcon } from "react-native-heroicons/solid";
 import { urlFor } from "../sanity";
-import { useDeliverooContext } from "../context/DeliverooContext.js";
+import  DishRow  from '../components/DishRow.jsx'
+
 
 export default function RestaurantDetails() {
   const navigation = useNavigation();
 
-  const { title, rating, genre, address, image, short_description } =
+  const { title, rating, genre, address, image, short_description, dishes } =
     useLocalSearchParams();
+
+    const menuDishes = JSON.parse(dishes)
 
   return (
     <ScrollView>
@@ -47,7 +50,9 @@ export default function RestaurantDetails() {
           <View className="flex-row space-x-2 my-1">
             <View className="flex-row items-center space-x-2">
               <StarIcon color="green" opacity={0.5} size={22} />
-              <Text className="text-green-500 text-md">● {rating}</Text>
+              <Text className='text-xs text-gray-500'>
+              <Text className="text-green-500 text-md">{rating}</Text> ● {genre}
+              </Text>
             </View>
 
             <View className="flex-row items-center space-x-2">
@@ -65,6 +70,21 @@ export default function RestaurantDetails() {
           </Text>
           <ChevronRightIcon color="#00CCBB" />
         </TouchableOpacity>
+      </View>
+      <View>
+          <Text className='px-4 pt-6 mb-3 font-bold text-xl'>Menu</Text>
+          {/* dishrows */}
+          {menuDishes?.map(({ _id, name, short_description, price, image })=> (
+            <DishRow 
+            key={_id}
+            id={_id}  
+            name={name}
+            description={short_description}
+            price={price}
+            image={image}
+            />
+          ))}
+          <DishRow />
       </View>
     </ScrollView>
   );

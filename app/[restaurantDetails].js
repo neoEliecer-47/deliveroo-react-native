@@ -16,8 +16,7 @@ import {
 } from "react-native-heroicons/outline";
 import { StarIcon } from "react-native-heroicons/solid";
 import { urlFor } from "../sanity";
-import  DishRow  from '../components/DishRow.jsx'
-
+import DishRow from "../components/DishRow.jsx";
 
 export default function RestaurantDetails() {
   const navigation = useNavigation();
@@ -25,8 +24,9 @@ export default function RestaurantDetails() {
   const { title, rating, genre, address, image, short_description, dishes } =
     useLocalSearchParams();
 
-    const menuDishes = JSON.parse(dishes)
-
+  const menuDishes = JSON.parse(dishes);
+  //console.log(JSON.parse(dishes))
+  console.log({ i: menuDishes });
   return (
     <ScrollView>
       <View className="relative">
@@ -50,8 +50,9 @@ export default function RestaurantDetails() {
           <View className="flex-row space-x-2 my-1">
             <View className="flex-row items-center space-x-2">
               <StarIcon color="green" opacity={0.5} size={22} />
-              <Text className='text-xs text-gray-500'>
-              <Text className="text-green-500 text-md">{rating}</Text> ● {genre}
+              <Text className="text-xs text-gray-500">
+                <Text className="text-green-500 text-md">{rating}</Text> ●{" "}
+                {genre}
               </Text>
             </View>
 
@@ -72,19 +73,22 @@ export default function RestaurantDetails() {
         </TouchableOpacity>
       </View>
       <View>
-          <Text className='px-4 pt-6 mb-3 font-bold text-xl'>Menu</Text>
-          {/* dishrows */}
-          {menuDishes?.map(({ _id, name, short_description, price, image })=> (
-            <DishRow 
-            key={_id}
-            id={_id}  
-            name={name}
-            description={short_description}
-            price={price}
-            image={image}
+        <Text className="px-4 pt-6 mb-3 font-bold text-xl">Menu</Text>
+        {/* dishrows */}
+        {menuDishes?.map(({ _id, name, short_description, price, image }) => {
+          let img = image.asset._ref;
+          return (
+            <DishRow
+              key={_id}
+              id={_id}
+              name={name}
+              description={short_description}
+              price={price}
+              image={img}
             />
-          ))}
-          <DishRow />
+          );
+        })}
+        
       </View>
     </ScrollView>
   );

@@ -15,8 +15,8 @@ export default function RestorantCard({
   short_description,
   dishes
 }) {
-  let image = img.asset._ref;
-
+  let image = img.asset._ref; 
+  
   return (
     <TouchableOpacity
       onPress={() =>

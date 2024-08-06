@@ -1,10 +1,10 @@
 import { Stack } from "expo-router";
-import { View } from "react-native";
-import DeliverooProvider from "../context/DeliverooContext";
+import { Provider } from "react-redux";
+import { store } from "../store";
 
 export default function Layout() {
   return (
-    <DeliverooProvider>
+    <Provider store={store}>
       <Stack>
         <Stack.Screen
           name="index"
@@ -19,6 +19,6 @@ export default function Layout() {
           }}
         />
       </Stack>
-    </DeliverooProvider>
+    </Provider>
   );
 }

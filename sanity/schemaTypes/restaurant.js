@@ -44,12 +44,11 @@ export default defineType({
       type: 'number',
       title: 'Enter a Rating from (1-5 Stars)',
       validation: (Rule) =>
-        Rule.required().min(1).max(5).error('please enter a vaklue between 1 and 5'),
+        Rule.required().min(1).max(5).error('please enter a value between 1 and 5'),
     },
     {
       name: 'type',
-
-      title: 'category',
+      title: 'Category',
       validation: (Rule) => Rule.required(),
       type: 'reference',
       to: [{type: 'category'}],

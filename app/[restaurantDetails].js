@@ -1,34 +1,41 @@
-import { Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
-import { urlFor } from "../sanity";
-import { ChevronLeftIcon } from "react-native-heroicons/solid";
-import { useNavigation } from "expo-router";
-import { StarIcon } from "react-native-heroicons/solid";
+import { useLocalSearchParams, useNavigation } from "expo-router";
+import { useEffect, useState } from "react";
 import {
+  ActivityIndicator,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
   MapPinIcon,
   QuestionMarkCircleIcon,
-  ChevronRightIcon,
 } from "react-native-heroicons/outline";
+import { StarIcon } from "react-native-heroicons/solid";
+import { urlFor } from "../sanity";
+import DishRow from "../components/DishRow.jsx";
+import BasketIcon from "../components/BasketIcon.jsx";
 
-export default function RestaurantScreen({
-  id,
-  img,
-  title,
-  rating,
-  genre,
-  address,
-  short_description,
-  dishes,
-  long,
-  lat,
-}) {
+export default function RestaurantDetails() {
   const navigation = useNavigation();
-  console.log(genre);
+
+  const { title, rating, genre, address, image, short_description, dishes } =
+    useLocalSearchParams();
+
+  const menuDishes = JSON.parse(dishes);
+  //console.log(JSON.parse(dishes))
+  //console.log({ i: menuDishes });
   return (
+    <>
+    <BasketIcon />
     <ScrollView>
       <View className="relative">
         <Image
           source={{
-            uri: urlFor(img).url(),
+            uri: urlFor(image).url(),
           }}
           className="w-full h-56 bg-gray-300 p-2"
         />
@@ -46,7 +53,10 @@ export default function RestaurantScreen({
           <View className="flex-row space-x-2 my-1">
             <View className="flex-row items-center space-x-2">
               <StarIcon color="green" opacity={0.5} size={22} />
-              <Text className="text-green-500 text-md">● {rating}</Text>
+              <Text className="text-xs text-gray-500">
+                <Text className="text-green-500 text-md">{rating}</Text> ●{" "}
+                {genre}
+              </Text>
             </View>
 
             <View className="flex-row items-center space-x-2">
@@ -65,6 +75,25 @@ export default function RestaurantScreen({
           <ChevronRightIcon color="#00CCBB" />
         </TouchableOpacity>
       </View>
+      <View className='pb-28'>
+        <Text className="px-4 pt-6 mb-3 font-bold text-xl">Menu</Text>
+        {/* dishrows */}
+        {menuDishes?.map(({ _id, name, short_description, price, image }) => {
+          let img = image.asset._ref;
+          return (
+            <DishRow
+              key={_id}
+              id={_id}
+              name={name}
+              description={short_description}
+              price={price}
+              image={img}
+            />
+          );
+        })}
+        
+      </View>
     </ScrollView>
+    </>
   );
 }

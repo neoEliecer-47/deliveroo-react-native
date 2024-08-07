@@ -17,6 +17,7 @@ import {
 import { StarIcon } from "react-native-heroicons/solid";
 import { urlFor } from "../sanity";
 import DishRow from "../components/DishRow.jsx";
+import BasketIcon from "../components/BasketIcon.jsx";
 
 export default function RestaurantDetails() {
   const navigation = useNavigation();
@@ -26,8 +27,10 @@ export default function RestaurantDetails() {
 
   const menuDishes = JSON.parse(dishes);
   //console.log(JSON.parse(dishes))
-  console.log({ i: menuDishes });
+  //console.log({ i: menuDishes });
   return (
+    <>
+    <BasketIcon />
     <ScrollView>
       <View className="relative">
         <Image
@@ -72,7 +75,7 @@ export default function RestaurantDetails() {
           <ChevronRightIcon color="#00CCBB" />
         </TouchableOpacity>
       </View>
-      <View>
+      <View className='pb-28'>
         <Text className="px-4 pt-6 mb-3 font-bold text-xl">Menu</Text>
         {/* dishrows */}
         {menuDishes?.map(({ _id, name, short_description, price, image }) => {
@@ -91,5 +94,6 @@ export default function RestaurantDetails() {
         
       </View>
     </ScrollView>
+    </>
   );
 }

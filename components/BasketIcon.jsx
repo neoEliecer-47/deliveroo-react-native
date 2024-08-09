@@ -10,6 +10,8 @@ export default function BasketIcon() {
   const navigation = useNavigation();
   const router = useRouter();
 
+  if(items.length === 0) return null;
+
   return (
     <View className="absolute bottom-10 w-full z-50">
       <Link href="/basketModalDetails" asChild>

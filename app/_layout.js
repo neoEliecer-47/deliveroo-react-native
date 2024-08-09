@@ -29,6 +29,15 @@ export default function Layout() {
             headerShown: false
           }}
         />
+        <JsStack.Screen
+          name="preparingOrder"
+          options={{
+            ...TransitionPresets.ModalSlideFromBottomIOS,
+            headerShown: false,
+            presentation: 'modal'
+
+          }}
+        />
       </JsStack>
     </Provider>
   );

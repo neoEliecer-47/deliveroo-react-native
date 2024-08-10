@@ -37,6 +37,13 @@ export default function Layout() {
             presentation: 'modal'
 
           }}
+          
+        />
+        <Stack.Screen 
+          name='delivery'
+          options={{
+            headerShown: false
+          }}
         />
       </JsStack>
     </Provider>

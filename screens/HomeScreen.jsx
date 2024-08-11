@@ -43,7 +43,7 @@ const HomeScreen = () => {
       });
   }, []);
 
-  //console.log(featuredCategories);
+
 
   return (
     <View

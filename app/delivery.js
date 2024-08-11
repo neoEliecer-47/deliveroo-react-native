@@ -15,7 +15,6 @@ import MapView, { Marker } from "react-native-maps";
 export default function delivery() {
   const navigation = useNavigation();
   const restaurant = useSelector(selectRestaurant);
-  console.log(restaurant);
 
   return (
     <View className="bg-[#00CCBB] flex-1">

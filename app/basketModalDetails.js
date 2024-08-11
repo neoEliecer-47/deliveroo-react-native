@@ -38,7 +38,7 @@ export default function BasketModalDetails() {
 
   function seekValue(array, valueToSearch) {
     const found = array.find((element) => {
-      console.log(element[1]);
+     
       return element === valueToSearch;
     });
     if (!found) return;

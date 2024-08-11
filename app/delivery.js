@@ -50,24 +50,25 @@ export default function delivery() {
 
       <MapView
         initialRegion={{
-          latitude: 41.8928,
-          longitude: -89.6317,
-          latitudeDelta: 0.005,
-          longitudeDelta: 0.005,
+          latitude: 41.33,
+          longitude: -122,
+          latitudeDelta: 2,
+          longitudeDelta: 2,
         }}
         className="flex-1 -mt-10 z-0"
         mapType="mutedStandard"
+        provider="google"
       >
-        <Marker
-          coordinate={{
-            latitude: restaurant.lat,
-            longitude: restaurant.long,
-          }}
-          title={restaurant.title}
-          description={restaurant.short_description}
-          identifier="origin"
-          pinColor="#00CCBB"
-        />
+       <Marker 
+        coordinate={{
+          latitude: 41.33,
+          longitude: -122,
+        }}
+        title={restaurant.title}
+        description={restaurant.short_description}
+        identifier="origin"
+        pinColor="#00CCBB"
+       />
       </MapView>
 
       <SafeAreaView className='bg-white flex-row items-center space-x-5 h-28'>

@@ -22,7 +22,7 @@ export default function RestaurantScreen({
   lat,
 }) {
   const navigation = useNavigation();
-  console.log(genre);
+
   return (
     <ScrollView>
       <View className="relative">
